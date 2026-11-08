@@ -1,0 +1,14 @@
+{
+  "name": "cabinetx",
+  "owner": {
+    "name": "Cabinet-X",
+    "email": "hello@cabinetx.app"
+  },
+  "plugins": [
+    {
+      "name": "cabinetx",
+      "source": "./claude",
+      "description": "Operate your own current Cabinet-X project through a local MCP bridge."
+    }
+  ]
+}

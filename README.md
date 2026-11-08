@@ -11,3 +11,14 @@ These are prepared packages, not marketplace approval. Cloud-only chat needs a s
 [Connection guide](https://cabinetx.app/mcp/) · [Privacy](https://cabinetx.app/privacy/) · [Terms](https://cabinetx.app/terms/) · [Support](https://cabinetx.app/support/)
 
 Copyright 2026 Cabinet-X. All rights reserved. See the LICENSE in each plugin folder. No Cabinet-X core or solver source is included.
+
+## Claude Code installation for authorised repository readers
+
+The repository is private during review preparation. With an account that can read it:
+
+```sh
+claude plugin marketplace add JoshLabs-App/cabinetx-mcp
+claude plugin install cabinetx@cabinetx
+```
+
+This registers our private test marketplace; it is not publication in Anthropic’s directory. Node.js 24 is required.
