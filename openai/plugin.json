@@ -1,0 +1,48 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "cabinetx",
+  "version": "1.1.0",
+  "description": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows.",
+  "author": {
+    "name": "Cabinet-X",
+    "email": "hello@cabinetx.app",
+    "url": "https://cabinetx.app"
+  },
+  "homepage": "https://cabinetx.app/mcp/",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "cabinetry",
+    "kitchen",
+    "design",
+    "quotes"
+  ],
+  "extensions": {
+    "com.openai": {
+      "onboardingSkill": "./skills/cabinetx/SKILL.md",
+      "interface": {
+        "displayName": "Cabinet-X",
+        "shortDescription": "Design and quote your kitchen",
+        "longDescription": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows. Local desktop integration; requires Node.js 24 and the Cabinet-X project page open on the same computer. Works only with the signed-in owner’s current project. AI client subscription and usage limits apply.",
+        "developerName": "Cabinet-X",
+        "category": "Productivity",
+        "capabilities": [
+          "Read project and survey",
+          "Edit cabinet designs",
+          "Check design",
+          "Verify cloud save",
+          "Prepare quote drafts"
+        ],
+        "websiteURL": "https://cabinetx.app",
+        "supportURL": "https://cabinetx.app/support/",
+        "privacyPolicyURL": "https://cabinetx.app/privacy/",
+        "termsOfServiceURL": "https://cabinetx.app/terms/",
+        "composerIcon": "./assets/logo.png",
+        "logo": "./assets/logo.png",
+        "defaultPrompt": [
+          "Summarize my current kitchen project without making changes.",
+          "Check my cabinet design and explain the warnings."
+        ]
+      }
+    }
+  }
+}

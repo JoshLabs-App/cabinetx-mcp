@@ -1,0 +1,18 @@
+{
+  "name": "cabinetx",
+  "version": "1.1.0",
+  "description": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows.",
+  "author": {
+    "name": "Cabinet-X",
+    "email": "hello@cabinetx.app",
+    "url": "https://cabinetx.app"
+  },
+  "homepage": "https://cabinetx.app/mcp/",
+  "license": "SEE LICENSE IN LICENSE",
+  "keywords": [
+    "cabinetry",
+    "kitchen",
+    "design",
+    "quotes"
+  ]
+}

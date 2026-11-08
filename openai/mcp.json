@@ -1,0 +1,15 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
+  "mcpServers": {
+    "cabinetx": {
+      "type": "stdio",
+      "command": "node",
+      "args": [
+        "${PLUGIN_ROOT}/server/cabinetx-mcp.mjs",
+        "--origin",
+        "https://cabinetx.app"
+      ],
+      "cwd": "${PLUGIN_ROOT}"
+    }
+  }
+}
