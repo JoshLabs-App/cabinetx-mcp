@@ -7,6 +7,7 @@ Official integration packages for your own Cabinet-X kitchen projects. This repo
 These are submission packages, not a claim of marketplace approval.
 
 - Claude plugin: path `claude` on `main`.
+- OpenAI remote plugin: path `openai-cloud`; uses the existing HTTPS/OAuth service, with separate design consent.
 - OpenAI desktop plugin: path `openai`; submission requires verified publisher identity and approved local MCP eligibility.
 - Cursor plugin: repository root, with `.cursor-plugin/plugin.json`.
 - Gemini CLI extension: repository root, with `gemini-extension.json`. Install with `gemini extensions install https://github.com/JoshLabs-App/cabinetx-mcp`. Gallery indexing is separate from installation.
@@ -15,7 +16,7 @@ These are submission packages, not a claim of marketplace approval.
 
 Node.js 24 or newer, a Cabinet-X account and the Cabinet-X project open on the same computer are required. Pair only your own current project. AI client subscriptions and usage limits apply. This local integration does not run while your computer is off.
 
-The separate remote sales endpoint `https://cabinetx.app/api/sales-mcp` uses OAuth and supports cloud sales consultation; it does not provide cloud design editing. Do not substitute it for this local design bridge.
+The separate remote sales endpoint `https://cabinetx.app/api/sales-mcp` uses OAuth and supports cloud sales consultation; it also supports separately authorized cloud design editing with a human-approved selected project/design. Its scope and setup differ from this local bridge.
 
 # Cabinet-X
 
