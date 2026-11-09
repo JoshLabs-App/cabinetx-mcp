@@ -62,3 +62,31 @@ local-MCP distribution uses a plugin, not a remote connector submission.
 · [Terms](https://cabinetx.app/terms/) · [Support](https://cabinetx.app/support/)
 
 Support: hello@cabinetx.app
+
+## Current-view render
+
+Choose the `current-view-render` MCP prompt or ask “Generate a magazine-quality
+render of my current view, keep the layout and sizes unchanged, and save it as the
+hero image.” The client receives the actual visible 3D image and a fixed prompt.
+Your client's own image generation/editing capability must generate the result;
+Cabinet-X does not call a model API. Generation can change details, so inspect the
+result before using it. Actual design data, dimensions and manufacturing drawings
+are not changed by this workflow.
+
+Clients with local image tools can use the dedicated source/output paths returned
+by `cabinetx_render prepare`, then call `save` with a fresh project revision and
+request ID. The bridge reads only its own designated output image, never an arbitrary
+caller-supplied file path. These temporary image files are removed after confirmed
+saving or normal shutdown; expired captures are removed on the next render call.
+Raster data URL return is also supported (PNG/JPEG/WebP, maximum 5MB).
+
+If automatic return is unavailable, save the generated image and use Cabinet-X →
+Showcase → Images → Import render, then Set as hero. Imports save to the current
+browser gallery and the cloud album. Hero selection belongs to this browser and
+is used in the next normal quote/showcase publication; published links do not
+change until updated normally. Update/restart the MCP bridge/plugin to discover
+the new tool and prompt. This does not establish support in every ChatGPT client.
+
+## Claude Code install
+
+`/plugin install cabinetx --marketplace JoshLabs-App/cabinetx-mcp`

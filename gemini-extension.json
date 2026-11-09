@@ -1,0 +1,17 @@
+{
+  "name": "cabinetx",
+  "version": "1.4.0",
+  "description": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows.",
+  "mcpServers": {
+    "cabinetx": {
+      "command": "node",
+      "args": [
+        "${extensionPath}/server/cabinetx-mcp.mjs",
+        "--origin",
+        "https://cabinetx.app"
+      ],
+      "cwd": "${extensionPath}"
+    }
+  },
+  "contextFileName": "GEMINI.md"
+}

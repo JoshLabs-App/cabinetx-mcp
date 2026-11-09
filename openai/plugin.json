@@ -1,7 +1,7 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
   "name": "cabinetx",
-  "version": "1.1.0",
+  "version": "1.4.0",
   "description": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows.",
   "author": {
     "name": "Cabinet-X",
@@ -30,7 +30,9 @@
           "Edit cabinet designs",
           "Check design",
           "Verify cloud save",
-          "Prepare quote drafts"
+          "Prepare quote drafts",
+          "Render the current view with your AI client",
+          "Generate and apply reference materials"
         ],
         "websiteURL": "https://cabinetx.app",
         "supportURL": "https://cabinetx.app/support/",
@@ -40,7 +42,8 @@
         "logo": "./assets/logo.png",
         "defaultPrompt": [
           "Summarize my current kitchen project without making changes.",
-          "Check my cabinet design and explain the warnings."
+          "Check my cabinet design and explain the warnings.",
+          "Generate a magazine-quality render of my current view, preserve the layout, and save it as the hero image."
         ]
       }
     }

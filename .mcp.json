@@ -1,0 +1,12 @@
+{
+  "mcpServers": {
+    "cabinetx": {
+      "command": "node",
+      "args": [
+        "${CURSOR_PLUGIN_ROOT}/server/cabinetx-mcp.mjs",
+        "--origin",
+        "https://cabinetx.app"
+      ]
+    }
+  }
+}
