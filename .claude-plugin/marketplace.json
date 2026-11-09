@@ -10,5 +10,8 @@
       "source": "./claude",
       "description": "Operate your own current Cabinet-X project through a local MCP bridge."
     }
-  ]
+  ],
+  "metadata": {
+    "description": "Official owner-scoped Cabinet-X kitchen design integration."
+  }
 }

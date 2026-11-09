@@ -105,4 +105,3 @@ browser gallery and the cloud album. Hero selection belongs to this browser and
 is used in the next normal quote/showcase publication; published links do not
 change until updated normally. Update/restart the MCP bridge/plugin to discover
 the new tool and prompt. This does not establish support in every ChatGPT client.
-
