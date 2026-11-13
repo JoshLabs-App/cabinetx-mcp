@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "opencabinet",
+  "name": "cabinetx-cloud",
   "version": "1.5.1",
   "description": "Create cloud kitchen cabinet projects from measurements or sketches, generate layouts on OpenCabinet’s Cabinet-X server solver, preview 2D plans and retail quote estimates, edit finishes, and manage customer follow-ups.",
   "author": {
