@@ -1,0 +1,12 @@
+{
+  "name": "opencabinet",
+  "version": "1.5.1",
+  "description": "Cloud kitchen cabinet layout solver, 2D plan previews, catalog finish edits, and retail quote estimates.",
+  "author": {
+    "name": "OpenCabinet (Cabinet-X)",
+    "email": "hello@cabinetx.app",
+    "url": "https://opencabinetai.com"
+  },
+  "homepage": "https://opencabinetai.com/",
+  "license": "SEE LICENSE IN LICENSE"
+}

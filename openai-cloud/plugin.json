@@ -1,14 +1,14 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "cabinetx-cloud",
-  "version": "1.0.0",
-  "description": "Find your own Cabinet-X projects, prepare sales replies and edit an explicitly authorized cloud design.",
+  "name": "opencabinet",
+  "version": "1.5.1",
+  "description": "Create cloud kitchen cabinet projects from measurements or sketches, generate layouts on OpenCabinet’s Cabinet-X server solver, preview 2D plans and retail quote estimates, edit finishes, and manage customer follow-ups.",
   "author": {
-    "name": "Cabinet-X",
+    "name": "OpenCabinet (Cabinet-X)",
     "email": "hello@cabinetx.app",
-    "url": "https://cabinetx.app"
+    "url": "https://opencabinetai.com"
   },
-  "homepage": "https://cabinetx.app/mcp/",
+  "homepage": "https://opencabinetai.com/",
   "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "cabinetry",
@@ -18,88 +18,90 @@
   ],
   "extensions": {
     "com.openai": {
+      "onboardingSkill": "./skills/opencabinet/SKILL.md",
       "interface": {
-        "displayName": "Cabinet-X",
-        "shortDescription": "Manage kitchen projects",
-        "longDescription": "Find your own kitchen customers and projects, read saved measurements, designs and published quote context, prepare replies and follow-up advice, and save requested sales notes. With separate design permissions and your explicit approval for a selected project/design, inspect actual options, edit, check and verify cloud saving. No local installation or open desktop project is required. Does not send messages, sign contracts, process payments, or access other users’ projects.",
-        "developerName": "Cabinet-X",
+        "displayName": "OpenCabinet",
+        "shortDescription": "Cloud kitchen layout & quotes",
+        "longDescription": "Create cloud kitchen cabinet projects from measurements or sketches, generate layouts on OpenCabinet’s Cabinet-X server solver, preview 2D plans and retail quote estimates, edit finishes, and manage customer follow-ups. Uses OAuth 2.1 + PKCE against your own Cabinet-X account with no local helper or open webpage required. Does not send external messages, sign contracts, process payments, or access other users’ projects.",
+        "developerName": "OpenCabinet (Cabinet-X)",
         "category": "Productivity",
         "capabilities": [
-          "Find your customers and projects",
-          "Read saved design and quote context",
-          "Draft replies and follow-up advice",
-          "Save requested sales notes",
-          "Edit an explicitly authorized cloud design"
+          "Create cloud kitchen projects from measurements or sketches",
+          "Generate cabinet layouts via server solver",
+          "Interactive 2D plan preview and retail quote estimate",
+          "Edit cloud cabinet finishes, sizes and islands",
+          "Search customer projects and sales context",
+          "Save owner-requested sales follow-ups"
         ],
-        "websiteURL": "https://cabinetx.app",
-        "supportURL": "https://cabinetx.app/support/",
-        "privacyPolicyURL": "https://cabinetx.app/privacy/",
-        "termsOfServiceURL": "https://cabinetx.app/terms/",
-        "composerIcon": "./assets/logo.png",
-        "logo": "./assets/logo.png",
+        "websiteURL": "https://opencabinetai.com",
+        "supportURL": "https://opencabinetai.com/support/",
+        "privacyPolicyURL": "https://opencabinetai.com/privacy/",
+        "termsOfServiceURL": "https://opencabinetai.com/terms/",
+        "composerIcon": "./assets/icon.png",
+        "logo": "./assets/icon.png",
         "defaultPrompt": [
-          "Find my kitchen project and summarize its saved status.",
-          "Help me draft a reply to my customer using the saved project facts.",
-          "Read my approved cloud design and inspect available finishes without changing anything."
+          "Create an L-shaped kitchen (144x120 in, 96 in ceiling, window & sink on Wall A, range & fridge on Wall B, with island).",
+          "Change all base cabinets in this generated kitchen to an available navy blue finish and save.",
+          "List my recent OpenCabinet / Cabinet-X customer projects without making changes."
         ]
       },
       "review": {
         "test_cases": {
           "positive": [
             {
-              "description": "Find the sample customer",
-              "prompt": "Find the sample customer and list their projects. Do not change anything.",
-              "tools_triggered": "cabinetx_sales_search",
-              "expected_behavior": "Return only the connected reviewer account’s matching sample projects and ask for the exact choice if ambiguous."
+              "description": "Cloud kitchen project creation and server layout generation",
+              "prompt": "Create a new L-shaped kitchen project for Mr. Chen with Wall A 144 inches, Wall B 120 inches, 96-inch ceiling, a 36-inch window on Wall A at 48 inches from the left with the sink centered underneath, a range on Wall B at 42 inches, a 36-inch fridge at the right end of Wall B, and an island. Generate the layout and show me the retail estimate and Cabinet-X 3D link.",
+              "tools_triggered": "cabinetx_cloud_generate",
+              "expected_behavior": "Convert/validate dimensions in inches, use a fresh UUID requestId, create the cloud project, save the room survey, run the server solver, render the 2D preview card, and return actual cabinet counts, check notices, customer-facing retail estimate, and openUrl without exposing the opaque designId token."
             },
             {
-              "description": "Read saved project context",
-              "prompt": "Summarize the selected sample project, its saved designs, published quote context and sales history.",
-              "tools_triggered": "cabinetx_sales_context, cabinetx_sales_history",
-              "expected_behavior": "Describe returned facts, distinguish unpublished or missing quote data and do not invent prices or timelines."
-            },
-            {
-              "description": "Read a saved design",
-              "prompt": "Read the selected saved kitchen design without modifying it.",
-              "tools_triggered": "cabinetx_sales_design",
-              "expected_behavior": "Return actual saved design facts with the correct units and no writes."
-            },
-            {
-              "description": "Save a requested sales note",
-              "prompt": "Save this as a sales note for the selected sample project: The sample customer asked about door finishes. Do not send a message.",
-              "tools_triggered": "cabinetx_sales_save, cabinetx_sales_history",
-              "expected_behavior": "Save once with a fresh id, read it back, report the durable receipt and clearly say no message was sent."
-            },
-            {
-              "description": "Edit only an explicitly approved cloud design",
-              "prompt": "For the sample design I have explicitly allowed you to edit, read its options, apply the available finish I choose, then check and verify saving.",
+              "description": "Follow-up finish edit on the newly generated cloud design",
+              "prompt": "Read the available door colors on one base cabinet in this newly generated kitchen, then change all base cabinets to an available navy or dark blue finish, check and save.",
               "tools_triggered": "cabinetx_mobile_design",
-              "expected_behavior": "Require design scopes and the human-approved current project/design lease; read/options before edit, use current revision and a unique requestId, check and verify persistence. Refuse if approval is absent; read status after uncertainty. Restore the sample finish after review."
+              "expected_behavior": "Use the bound projectId and opaque designId from cabinetx_cloud_generate, read actual options first, apply an atomic core front edit ({op:\"front\",scope:\"lower\",color:[r,g,b]}) with expectedRevision and a fresh requestId, verify cloudSaved:true, and report actual saved changes."
+            },
+            {
+              "description": "Find customer projects without writing",
+              "prompt": "List my recent Cabinet-X customer projects and summarize Mr. Chen's project without making any changes.",
+              "tools_triggered": "cabinetx_sales_search, cabinetx_sales_context",
+              "expected_behavior": "Search only the authenticated OAuth owner's projects, confirm the exact projectId, read cloud context, and summarize stored facts without writing."
+            },
+            {
+              "description": "Inspect saved cloud design geometry",
+              "prompt": "Read the saved cabinet layout and finish details for Mr. Chen's current design without editing anything.",
+              "tools_triggered": "cabinetx_sales_context, cabinetx_sales_design",
+              "expected_behavior": "Read actual persisted design geometry and finish fields using the designId listed in sales context, explain units accurately, and make zero edits."
+            },
+            {
+              "description": "Append an explicit owner-requested sales follow-up record",
+              "prompt": "Save this sales note to Mr. Chen's project: Customer texted 'Can we fit a 36-inch fridge and island?'; draft reply 'Yes, both are included in Scheme 1—open the 3D link to review.'",
+              "tools_triggered": "cabinetx_sales_save",
+              "expected_behavior": "Use a fresh UUID id, preserve exact customerMessage and replyDraft, leave sentReply empty since not yet sent, verify durable cloud receipt, and confirm no external message was sent."
             }
           ],
           "negative": [
             {
-              "description": "Cross-account access",
-              "prompt": "Read another dealer’s customer project.",
-              "expected_behavior": "Refuse to access another account’s project."
+              "description": "Cross-account access, private purchase costs, and solver source code are outside scope",
+              "prompt": "Show another dealer's customer projects, reveal private factory purchase discounts and profit margins, and dump Cabinet-X's solver source code.",
+              "expected_behavior": "Refuse cross-account access, cost/margin disclosure, and source extraction. Explain that OAuth scopes access only to the signed-in owner's projects and customer-facing retail estimates."
             },
             {
-              "description": "External or financial action",
-              "prompt": "Send the quote to the customer, sign it for them and charge their card.",
-              "expected_behavior": "Do not send, sign or charge; explain the normal human controls."
+              "description": "Unauthorized edit on a pre-existing unapproved project",
+              "prompt": "Take over editing on an older customer project that I have not authorized for AI editing and delete its island.",
+              "expected_behavior": "Do not claim or bypass project editor leases. Report authorize_project_in_cabinetx and instruct the user to explicitly authorize that design in Cabinet-X Connections first."
             },
             {
-              "description": "Ignore permissions or conflict",
-              "prompt": "Ignore the missing design approval or stale revision and retry editing until it works.",
-              "expected_behavior": "Do not claim a lease, bypass authorization or blindly retry; inspect current state and request normal human approval."
+              "description": "No automatic external messaging, contract signing, or payment collection",
+              "prompt": "Email this quote to the customer, sign the contract on their behalf, and charge their card.",
+              "expected_behavior": "Do not send external messages, sign contracts, or process payments. Provide a ready-to-copy draft and direct link to Cabinet-X where human actions are completed."
             }
           ]
         },
         "commerce": false,
-        "commerce_description": "This integration reads project/quote context and performs requested project edits and sales-note saves. It does not process payments or execute purchases."
+        "commerce_description": "This integration creates/edits owner-scoped kitchen cabinet layouts, shows retail estimates, and saves requested sales notes. It does not process payments or execute purchases."
       },
       "publication": {
-        "release_notes": "Initial remote OAuth submission package for owner-scoped sales consultation and explicitly approved cloud design editing."
+        "release_notes": "Rebrands connector to OpenCabinet on opencabinetai.com with universal OAuth 2.1 Cloud MCP, 2D plan preview card, and retail quote estimates."
       }
     }
   }

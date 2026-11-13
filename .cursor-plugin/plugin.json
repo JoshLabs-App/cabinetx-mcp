@@ -1,19 +1,20 @@
 {
-  "name": "cabinetx",
-  "version": "1.4.0",
-  "description": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows.",
+  "name": "opencabinet",
+  "version": "1.5.1",
+  "description": "Create cloud kitchen cabinet projects from measurements or sketches, generate layouts via server solver, preview 2D plans and retail quote estimates, and edit catalog finishes.",
   "author": {
-    "name": "Cabinet-X",
+    "name": "OpenCabinet (Cabinet-X)",
     "email": "hello@cabinetx.app",
-    "url": "https://cabinetx.app"
+    "url": "https://opencabinetai.com"
   },
-  "homepage": "https://cabinetx.app/mcp/",
+  "homepage": "https://opencabinetai.com/",
   "license": "SEE LICENSE IN LICENSE",
   "keywords": [
     "cabinetry",
     "kitchen",
     "design",
-    "quotes"
+    "quotes",
+    "mcp"
   ],
-  "logo": "assets/logo.png"
+  "logo": "assets/icon.png"
 }

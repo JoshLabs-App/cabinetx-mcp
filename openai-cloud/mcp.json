@@ -1,9 +1,9 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/mcp.schema.json",
   "mcpServers": {
-    "cabinetx": {
+    "opencabinet": {
       "type": "streamable-http",
-      "url": "https://cabinetx.app/api/sales-mcp",
+      "url": "https://opencabinetai.com/api/sales-mcp",
       "extensions": {
         "com.openai": {
           "auth": {
@@ -11,7 +11,7 @@
             "client": {
               "mode": "dcr"
             },
-            "resource": "https://cabinetx.app/api/sales-mcp",
+            "resource": "https://opencabinetai.com/api/sales-mcp",
             "baseScopes": [
               "sales:read"
             ],

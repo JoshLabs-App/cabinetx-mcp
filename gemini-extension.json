@@ -1,16 +1,13 @@
 {
-  "name": "cabinetx",
-  "version": "1.4.0",
-  "description": "Inspect and edit your current Cabinet-X kitchen cabinet project through its normal workflows.",
+  "name": "opencabinet",
+  "version": "1.5.1",
+  "description": "Cloud kitchen cabinet layout solver, 2D plan previews, catalog finish edits, and retail quote estimates.",
   "mcpServers": {
-    "cabinetx": {
-      "command": "node",
-      "args": [
-        "${extensionPath}/server/cabinetx-mcp.mjs",
-        "--origin",
-        "https://cabinetx.app"
-      ],
-      "cwd": "${extensionPath}"
+    "opencabinet": {
+      "httpUrl": "https://opencabinetai.com/api/sales-mcp",
+      "oauth": {
+        "enabled": true
+      }
     }
   },
   "contextFileName": "GEMINI.md"

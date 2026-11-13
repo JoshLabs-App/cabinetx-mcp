@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "opencabinet": {
+      "type": "http",
+      "url": "https://opencabinetai.com/api/sales-mcp"
+    }
+  }
+}
